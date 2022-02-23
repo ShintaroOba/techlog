@@ -1,6 +1,3 @@
-# REMOVE THIS
-themesDir = "./" 
-
 # DO NOT REMOVE THIS
 theme = "hugo-theme-codex" 
 
@@ -10,13 +7,6 @@ languageCode = "en-us"
 baseURL = "https://obashin-tech.netlify.app"
 copyright = "© {2022}"
 
-# Add your Disqus shortname here.
-# disqusShortname = ""
-
-# Add your Google Analytics identifier: UA-XXXXXXXX-X
-# googleAnalytics = "" 
-
-# Optional params
 [params]
   # Follow the Hugo date/time format reference here: 
   # https://gohugo.io/functions/format/#gos-layout-string
@@ -26,21 +16,11 @@ copyright = "© {2022}"
   twitter = "https://twitter.com/deanshintaro"
   github = "https://github.com/ShintaroOba"
    email = "mailto:mr.shintaro3@gmail.com"
-  # mastodon = "https://mastodon.social/@nickname"
-  # facebook = "https://facebook.com/<your handle>"
-  # gitlab = "https://gitlab.com/<your handle>"
-  # instagram = "https://instagram.com/<your handle>"
-  # linkedin = "<link to your profile>"
-  # youtube = "https://www.youtube.com/channel/<your channel>"
-  
+
   # Titles for your icons (shown as tooltips), and also their display order.
   # Currently, these icons are supported: 
   #   "Twitter", "GitHub", "Email", "Mastodon", "Facebook", "GitLab", "Instagram", "LinkedIn", "YouTube"
   iconOrder = ["Twitter", "GitHub"]
-
-  # Metadata for Twitter cards, defaults to params.twitter
-  # twitterSite = "@<your handle>"
-  # twitterAuthor = "@<your handle>"
 
   # Set to true to display page title in table of contents in blog posts.
   showPageTitleInTOC = false
