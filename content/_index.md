@@ -1,8 +1,5 @@
 ---
-heading: "Hi, I'm Shintaro Oba"
-subheading: "A minimal blog theme for hugo."
-handle: "hugo-theme-codex"
+heading: "Shintaro Oba"
+subheading: ""
+handle: "Tokyo/Japan"
 ---
-# About
-Shintaro Oba
-1995/6/23
