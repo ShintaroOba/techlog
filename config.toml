@@ -15,7 +15,7 @@ copyright = "© {2022}"
   # Links to your social accounts, comment/uncomment as needed. Icons will be displayed for those specified.
   twitter = "https://twitter.com/deanshintaro"
   github = "https://github.com/ShintaroOba"
-   email = "mailto:mr.shintaro3@gmail.com"
+  email = "mr.shintaro3@gmail.com"
 
   # Titles for your icons (shown as tooltips), and also their display order.
   # Currently, these icons are supported: 
