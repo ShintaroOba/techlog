@@ -5,3 +5,4 @@ handle: "hugo-theme-codex"
 ---
 # About
 Shintaro Oba
+1995/6/23
