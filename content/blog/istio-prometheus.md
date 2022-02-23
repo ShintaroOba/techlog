@@ -5,7 +5,7 @@ slug: ""
 description: "Prometheus, Grafanaを使って監視基盤を構築した際の話です。"
 keywords: ["Prometheus", "Grafana", "GCP", "kubernetes"]
 draft: false
-tags: ["Prometheus", "observability", "GKE"]
+tags: ["observability"]
 math: false
 toc: true
 ---
