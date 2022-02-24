@@ -14,11 +14,12 @@ copyright = "© {2022}"
   # Links to your social accounts, comment/uncomment as needed. Icons will be displayed for those specified.
   twitter = "https://twitter.com/deanshintaro"
   github = "https://github.com/ShintaroOba"
-
+  
+  iconTitles = ["Twitter", "GitHub"]
   iconOrder = ["Twitter", "GitHub"]
 
   # Set to true to display page title in table of contents in blog posts.
-  showPageTitleInTOC = false
+  showPageTitleInTOC = true
 
 # This disables Hugo's default syntax highlighting in favor
 # of prismjs. If you wish to use Hugo's default syntax highlighting
