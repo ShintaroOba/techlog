@@ -1,5 +1,5 @@
 ---
-heading: "Shintaro Oba"
+heading: "tech-log "
 subheading: ""
-handle: "Tokyo/Japan"
+handle: "Shintaro Oba"
 ---
