@@ -1,5 +1,5 @@
 ---
 heading: "TechLog "
-subheading: "頭の整理"
+subheading: "Japanese tech blog that is part of software engineering"
 handle: "Shintaro Oba"
 ---
