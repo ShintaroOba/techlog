@@ -11,11 +11,11 @@ toc: true
 ---
 
 
-# 本記事でやること
+## 本記事でやること
 GKEクラスターにPromehteusをデプロイし、アプリのPodを監視する基盤を構築する。
 今回は公開されているhelm chart ([prometheus-community/kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack))を利用してPrometheus OperatorやAlertMangager等の周辺ツールの導入を行う。
 
-# Prometheusとは
+## Prometheusとは
 監視用のソフトウェアとして開発された。Pull型の時系列データベースで、Prometheus内部のServiceDiscovery機能を使い、監視対象のターゲットを自動で判別することができる。
 また、PromQLというPrometheus専用のクエリ言語を使って必要なメトリクスやデータをターゲットから取得(Pull)することができる。  
 
@@ -27,7 +27,7 @@ GKEクラスターにPromehteusをデプロイし、アプリのPodを監視す�
 DBなどの標準的なな外部サービスは公式でExporterが提供されている。
 
 
-# Prometheus Operatorとは
+## Prometheus Operatorとは
 [https://github.com/prometheus-operator/prometheus-operator](https://github.com/prometheus-operator/prometheus-operator)
 
 Prometheus OperaotrはPrometheusの監視対象との接続や設定の管理を行う。
@@ -38,7 +38,7 @@ Operatorを利用する際に得られるメリットは下記。
 * **Simplified Deployment Configuration**: Prometheusのコンポーネントのデプロイをk8sのリソースで管理することができる(Prometheusのバージョンなど)
 * **Prometheus Targget Configuration**: 監視対象との接続に必要な設定を自動生成することができる。複雑な設定はOperatorによって隠蔽されており、利用者はk8sリソースのlabelを指定するだけでよい。
 
-## 全体構成
+#### 全体構成
 
 Prometheus Operatorを利用した場合の構成図
 ![S](https://www.scsk.jp/sp/sysdig/blog/20200112c.png)
@@ -63,9 +63,9 @@ ServiceMonitorを使えばServiceにぶら下がったPod群すべてを監視�
 
 
 
-# 導入手順
+## 導入手順
 
-## Helmインストール
+#### Helmインストール
 
 ```sh
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
@@ -80,43 +80,43 @@ $ helm version
 version.BuildInfo{Version:"v3.6.2", GitCommit:"ee407bdf364942bcb8e8c665f82e15aa28009b71", GitTreeState:"clean", GoVersion:"go1.16.5"}
 ```
 
-## Prometheus Operatorのインストール
+#### Prometheus Operatorのインストール
 
-### 対象のhelm chartを追加
+###### 対象のhelm chartを追加
 
 ```sh
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 $ helm repo update
 ```
 
-### 監視用の名前空間を作成
+###### 監視用の名前空間を作成
 
 ```bash
 $ kubectl create namespace monitoring
 ```
   
-### Prometheus Operatorのインストール
+###### Prometheus Operatorのインストール
 
 ```sh
 $ helm install prometheus-stack prometheus-community/kube-prometheus-stack -n monitoring
 ```
 
-### (参考) Chartの構造
+###### (参考) Chartの構造
 
 ```yaml
 <チャート名ディレクトリ>/
-Chart.yaml          # チャートの概要が記述されたYAMLファイル(ファイル名は予約)
-LICENSE             # オプション:このチャートのライセンス情報
-README.md           # オプション: チャートの説明
-requirements.yaml   # オプション: このチャートが利用する(依存する)他のチャートの一覧。(ファイル名は予約)
-values.yaml         # このチャートのデフォルト設定値が定義されたYAMLファイル。ファイル名は予約)
-charts/             # このチャートが依存するチャートをコピー配置するディレクトリ(ディレクトリ名は予約)
-templates/          # チャートの本体ともいえる、KubernetesオブジェクトのリソースYAMLのテンプレート群を配置するディレクトリ(ディレクトリ名は予約)
-templates/NOTES.txt # オプション:利用方法を生成するテキストファイル
-tests/              # オプション:helm testで実行されるテスト用YAMLを配置するディレクトリ(ディレクトリ名は予約)
+Chart.yaml          ## チャートの概要が記述されたYAMLファイル(ファイル名は予約)
+LICENSE             ## オプション:このチャートのライセンス情報
+README.md           ## オプション: チャートの説明
+requirements.yaml   ## オプション: このチャートが利用する(依存する)他のチャートの一覧。(ファイル名は予約)
+values.yaml         ## このチャートのデフォルト設定値が定義されたYAMLファイル。ファイル名は予約)
+charts/             ## このチャートが依存するチャートをコピー配置するディレクトリ(ディレクトリ名は予約)
+templates/          ## チャートの本体ともいえる、KubernetesオブジェクトのリソースYAMLのテンプレート群を配置するディレクトリ(ディレクトリ名は予約)
+templates/NOTES.txt ## オプション:利用方法を生成するテキストファイル
+tests/              ## オプション:helm testで実行されるテスト用YAMLを配置するディレクトリ(ディレクトリ名は予約)
 ```
    
-### ここまででインストールしたものの確認
+###### ここまででインストールしたものの確認
  
 ```sh
 $ kubectl get pods -n monitoring
@@ -146,10 +146,10 @@ prometheus-stack-prometheus-node-exporter-swp88          1/1     Running   0    
 このあたりはPrometheusとセットで構築することも多く、初期構築のコストも高いため、Helmでインストール、管理できるのはかなり助かる。
 Helmで導入されたPrometheusにもそれなりの数のアラート設定があるため、改修したければカスタムリソースを別途定義して設定を上書きすることができれば、CDフローとしても取り込めるだろう。
 
-## 監視対象のアプリケーションをデプロイ
+#### 監視対象のアプリケーションをデプロイ
 アプリはデプロイされてる前提だが、もしデプロイしていなければデプロイしておく。
 
-## ServiceMonitorの作成
+#### ServiceMonitorの作成
 アプリのServiceを監視するServiceMonitorをカスタムリソースを使って定義する。
 
 ```yaml
@@ -204,7 +204,7 @@ helmチャートでインストールしたPrometheusのymlを取得して確認
       ...
       serviceAccountName: prometheus-stack-kube-prom-prometheus
       serviceMonitorNamespaceSelector: {}
-      serviceMonitorSelector: #監視対象のServiceMonitorを選択
+      serviceMonitorSelector: # 監視対象のServiceMonitorを選択
         matchLabels:
           release: prometheus-stack # (1)
       shards: 1
@@ -215,7 +215,7 @@ PrometheusはserviceMonitorSelectorの定義によって監視するServiceMonit
 そのため、今回追加したServiceMonitorも同様のラベルを持つように設定している。
 
 
-# 動作確認
+## 動作確認
 GKE上で下記コマンドを実行し、Serviceへのポートをフォワードする。
 
 ```sh
@@ -225,7 +225,7 @@ $ gcloud container clusters get-credentials sample-app --zone asia-northeast1 --
 
 Prometheusの画面が立ち上がるので、Targetを選択して対象のコンポーネントがUP状態になっていることを確認する。
 
-## さいごに
+#### さいごに
 
 
 2021/9時点ではPrometheus Operatorはbetaリリースだが、遠くない未来にGA(General Availability) を迎えるはずなので注目。w
