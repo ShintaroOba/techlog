@@ -9,35 +9,7 @@ tags: ["コンテナ"]
 math: false
 toc: true
 ---
-#目次
-<!-- TOC -->
 
-- [なんでDockerじゃないコンテナの話をするの？](#なんでdockerじゃないコンテナの話をするの)
-  - [こうなった(せざるを得なかった)理由](#こうなったせざるを得なかった理由)
-- [Dockerに代わるコンテナランタイム](#dockerに代わるコンテナランタイム)
-  - [高レベルランタイム](#高レベルランタイム)
-  - [低レベルランタイム](#低レベルランタイム)
-  - [代表的な高レベルランタイム](#代表的な高レベルランタイム)
-    - [Containerd](#containerd)
-    - [CRI-O](#cri-o)
-- [containerdを触ってみる](#containerdを触ってみる)
-  - [ctrコマンド](#ctrコマンド)
-  - [containerdインストール](#containerdインストール)
-  - [daemonの設定ファイルの編集](#daemonの設定ファイルの編集)
-- [ctrコマンドを使ったイメージ/コンテナ操作](#ctrコマンドを使ったイメージコンテナ操作)
-  - [dockerhubからイメージのpull](#dockerhubからイメージのpull)
-  - [image一覧の取得](#image一覧の取得)
-  - [コンテナの作成](#コンテナの作成)
-  - [コンテナ一覧の取得](#コンテナ一覧の取得)
-  - [イメージの削除](#イメージの削除)
-  - [コンテナの削除](#コンテナの削除)
-  - [コンテナの実行](#コンテナの実行)
-  - [dockerでビルドしたDockerImageの実行](#dockerでビルドしたdockerimageの実行)
-    - [DockerImageのエクスポート(.tar)](#dockerimageのエクスポートtar)
-    - [containerdでのインポート](#containerdでのインポート)
-    - [run](#run)
-
-<!-- /TOC -->
 # なんでDockerじゃないコンテナの話をするの？
 2020年12月、Kubernetesのマイナーリリース(v1.20)にてこんなアップデートがありました。
 > Docker support in the kubelet is now deprecated and will be removed in a future release. The kubelet uses a module called "dockershim" which implements CRI support for Docker and it has seen maintenance issues in the Kubernetes community. We encourage you to evaluate moving to a container runtime that is a full-fledged implementation of CRI (v1alpha1 or v1 compliant) as they become available. 
