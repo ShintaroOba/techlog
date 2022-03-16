@@ -18,11 +18,13 @@ CKAD: Certified Kubernetes Application Developerで、CNCF公認の資格です�
 そして、この試験ですが2021年9月に試験範囲が大幅に改定されました。
 [公式の改定内容](https://training.linuxfoundation.org/ja/ckad-program-change-2021/)
 
+
 * アプリケーションの設計と構築–20%
 * アプリケーションの展開–20%
 * アプリケーションの可観測性とメンテナンス–15%
 * アプリケーション環境、構成、およびセキュリティ–25%
 * サービスとネットワーキング–20%
+
 
 以前と見比べると、章立てからだいぶ変わったように見えます。具体的には、
 
@@ -44,7 +46,7 @@ k8sを体系的に学べるいい機会かな、という軽い気持ちで受�
 ## 準備期間とやったこと
 試験改定後でもやったことは他の方とおんなじです。
 
-#### Udemy - Kubernetes Certified Application Developer (CKAD) with Tests -
+#### ■Udemy - Kubernetes Certified Application Developer (CKAD) with Tests -
 [Udemy: certified-kubernetes-application-developer](https://www.udemy.com/course/certified-kubernetes-application-developer/)
 
 他のブログでも数多く見かけて推奨されてるやつです。
@@ -53,7 +55,7 @@ Kubernetesの各リソースについて、概念からしっかり説明して�
 音声が英語のみですが、字幕がすべて表示できるのと説明するときはほとんどアニメーション付いてるのでだいぶ理解しやすかったです。
 あとは他の有料サービスとかと比べても、**試験改定後の内容についても対応してるのはこのUdemyの講座だけらしいです。**
 
-#### CKAD-exercises
+#### ■CKAD-exercises
 Udemyでみっちり演習できるので基本的にはなくてもいいですが、本番をよりイメージした問題で演習したかったのでやりました。
 Udemyでカバーできてはいますが、小手先のテクニック的なものはこの演習で習得できた気がします。
 このリポジトリの演習される方で、GCPの無料期間を使ってKubennetes環境を構築したりする方もいるようですが、私の場合はUdemyの講座で利用する演習用のWebターミナルを使ってこのGithubの演習をしてましたw
