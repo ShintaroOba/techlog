@@ -42,8 +42,6 @@ copyright = "© {2022}"
 
   # Set to true to display page title in table of contents in blog posts.
   showPageTitleInTOC = false
-  [blog]
-    showSummary = true
 
 # This disables Hugo's default syntax highlighting in favor
 # of prismjs. If you wish to use Hugo's default syntax highlighting
