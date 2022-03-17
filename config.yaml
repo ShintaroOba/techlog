@@ -43,7 +43,7 @@ params:
   # Author biography
   bio: Software Engineer
   # Site Description, used in HTML meat
-  description: Tech Blog
+  description: Just a tech blog for tracking technology changes
 
 
   ###########################################
