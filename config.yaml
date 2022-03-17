@@ -1,7 +1,7 @@
 baseURL: https://shin-techlog.netlify.app/
 languageCode: en-us
 title: TechLog
-theme: hugo-theme-mini
+theme: mini
 
 # Default content language, support en (English) / zh (Chinese) / nl (Dutch) / fr (French) / es (Spanish), default 'en'
 defaultContentLanguage: ja
