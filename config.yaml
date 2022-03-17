@@ -1,16 +1,16 @@
 baseURL: https://shin-techlog.netlify.app/
-languageCode: en-us
+languageCode: en
 title: TechLog
 theme: mini
 
 # Default content language, support en (English) / zh (Chinese) / nl (Dutch) / fr (French) / es (Spanish), default 'en'
-defaultContentLanguage: ja
+defaultContentLanguage: en
 
 hasCJKLanguage: true
 permalinks:
   posts: /posts/:title/
 
-paginate: 3
+paginate: 10
 
 # googleAnalytics: your-google-analytics-id
 # disqusShortname: your-disqus-shortname

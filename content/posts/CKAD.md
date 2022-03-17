@@ -6,7 +6,6 @@ description = "CNCF認定資格のKubernetesアプリケーションデベロッ
 tags = [
     "資格試験",
 ]
-
 +++
 
 ## CKADの概要
