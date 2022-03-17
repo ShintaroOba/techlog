@@ -41,7 +41,8 @@ params:
   # Site Author
   author: ShintaroOba
   # Author biography
-  bio: Software Engineer
+  bio: Just a tech blog for tracking technology changes
+
   # Site Description, used in HTML meat
   description: Just a tech blog for tracking technology changes
 
