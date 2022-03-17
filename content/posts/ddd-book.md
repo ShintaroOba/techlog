@@ -1,14 +1,12 @@
----
-title: "「ドメイン駆動設計入門 -成瀬允宣」を読んだ"
-date: 2020-12-08T09:19:29-04:00
-slug: ""
-description: "DDDの本が面白かったのでおすすめさせてください。"
-keywords: ["技術本"]
-draft: false
-tags: ["本"]
-math: false
-toc: true
----
++++
+author = "ShintaroOba"
+title = "「ドメイン駆動設計入門 -成瀬允宣」を読んだ"
+date = "2021-12-08"
+description = "面白かったDDD本のおすすめ"
+tags = [
+    "本",
+]
++++
 
 ## はじめに
 

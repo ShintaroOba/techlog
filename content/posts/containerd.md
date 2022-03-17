@@ -1,14 +1,13 @@
----
-title: "Dockerじゃないコンテナの話"
-date: 2021-08-21T09:19:29-04:00
-slug: "example-post"
-description: "Containerdというコンテナランタイムの話です。"
-keywords: ["コンテナ", "containerd"]
-draft: false
-tags: ["コンテナ"]
-math: false
-toc: true
----
++++
+author = "ShintaroOba"
+title = "Dockerじゃないコンテナの話"
+date = "2021-08-21"
+description = "Containerdというコンテナランタイムの話です。"
+tags = [
+    "クラウドネイティブ",
+]
+
++++
 
 ## なんでDockerじゃないコンテナの話をするの？
 2020年12月、Kubernetesのマイナーリリース(v1.20)にてこんなアップデートがありました。
