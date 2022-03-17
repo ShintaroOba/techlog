@@ -5,6 +5,4 @@
 - [Hugo](https://gohugo.io/) is used for building my website.
 - [Netlify](https://www.netlify.com/) provides hosting my website and a quick and easy deploy environment.
 
-My tech-log is here:
-https://main--shin-techlog.netlify.app/  
 ![image](https://user-images.githubusercontent.com/57422625/155529150-197eee18-39c4-4ff2-a4b0-361084085041.png)
