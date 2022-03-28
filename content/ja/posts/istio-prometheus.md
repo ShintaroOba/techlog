@@ -7,6 +7,8 @@ titleWrap: wrap
 tags: 
 - クラウドネイティブ
 - 監視
+
+image: images/summary/istio.png
 ---
 
 
