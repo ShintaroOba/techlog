@@ -54,7 +54,7 @@ bioImageUrl = "" # image url like "http//..." or "images/anyfoldername/mybioimag
 useGravatar = false # we use this option highest priority
 location = "Tokyo / Japan"
 organization = ""
-link = "https://twitter.com/deanshintaro"
+link = ""
 
 # sidebar
 enableBio = true # in home page sidebar
