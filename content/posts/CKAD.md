@@ -1,12 +1,13 @@
-+++
-author = "ShintaroOba"
-title = "【試験内容改定後】CKADに合格しました(2021/11)"
-date = "2021-11-20"
-description = "CNCF認定資格のKubernetesアプリケーションデベロッパーの合格体験記です。"
-tags = [
-    "資格試験",
-]
-+++
+---
+type: Archive
+title: 試験内容改定後】CKADに合格しました(2021/11)
+date: "2021-11-20"
+description: "CNCF認定資格のKubernetesアプリケーションデベロッパーの合格体験記です。"
+titleWrap: wrap
+tags: 
+- クラウドネイティブ
+- 資格試験
+---
 
 ## CKADの概要
 CKAD: Certified Kubernetes Application Developerで、CNCF公認の資格です。試験は120分で20問弱。実技試験で各自ターミナルが与えらえれるので、ターミナルを使ってKubenetesリソースを作ったり動かないPodを修正する、というのが試験の内容です。

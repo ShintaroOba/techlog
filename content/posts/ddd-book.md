@@ -1,12 +1,13 @@
-+++
-author = "ShintaroOba"
-title = "「ドメイン駆動設計入門 -成瀬允宣」を読んだ"
-date = "2020-12-08"
-description = "面白かったDDD本のおすすめ"
-tags = [
-    "本",
-]
-+++
+---
+type: Archive
+title: 「ドメイン駆動設計入門 -成瀬允宣」を読んだ
+date: 2020-12-08
+description: 面白かったDDD本のおすすめ
+titleWrap: wrap
+tags: 
+- 本
+---
+
 
 # はじめに
 

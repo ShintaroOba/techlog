@@ -1,13 +1,13 @@
-+++
-author = "ShintaroOba"
-title = "Dockerじゃないコンテナの話"
-date = "2021-08-21"
-description = "Containerdというコンテナランタイムの話です。"
-tags = [
-    "クラウドネイティブ",
-]
+---
+type: Archive
+title: Dockerじゃないコンテナの話
+date: 2021-08-21
+description: Containerdというとあるコンテナランタイムの話
+titleWrap: wrap
+tags: 
+- クラウドネイティブ
+---
 
-+++
 
 # なんでDockerじゃないコンテナの話をするの？
 2020年12月、Kubernetesのマイナーリリース(v1.20)にてこんなアップデートがありました。

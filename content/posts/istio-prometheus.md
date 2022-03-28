@@ -1,13 +1,14 @@
-+++
-author = "ShintaroOba"
-title = "PrometheusOperatorを使ってGKE上に監視基盤を作ってみた"
-date = "2021-09-23"
-description = "Prometheus, Grafanaを使って監視基盤を構築した際の話です。"
-tags = [
-    "クラウドネイティブ",
-    "監視"
-]
-+++
+---
+type: Archive
+title: PrometheusOperatorを使ってGKE上に監視基盤を作ってみた
+date: 2021-09-23
+description: Prometheus, Grafanaを使って監視基盤を構築した知見まとめ
+titleWrap: wrap
+tags: 
+- クラウドネイティブ
+- 監視
+---
+
 
 # 本記事でやること
 GKEクラスターにPromehteusをデプロイし、アプリのPodを監視する基盤を構築する。
