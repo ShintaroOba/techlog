@@ -6,6 +6,8 @@ description: 面白かったDDD本のおすすめ
 titleWrap: wrap
 tags: 
 - 本
+
+image: images/summary/ddd.jpg
 ---
 
 

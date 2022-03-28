@@ -7,6 +7,8 @@ titleWrap: wrap
 tags: 
 - クラウドネイティブ
 - 資格試験
+
+image: images/summary/ckad.png
 ---
 
 ## CKADの概要

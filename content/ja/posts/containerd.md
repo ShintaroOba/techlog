@@ -6,6 +6,8 @@ description: Containerdというとあるコンテナランタイムの話
 titleWrap: wrap
 tags: 
 - クラウドネイティブ
+
+image: images/summary/containerd.png
 ---
 
 
