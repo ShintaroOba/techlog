@@ -1,6 +1,6 @@
 ---
 type: Archive
-title: 試験内容改定後】CKADに合格しました(2021/11)
+title: 【試験内容改定後】CKADに合格しました(2021/11)
 date: "2021-11-20"
 description: "CNCF認定資格のKubernetesアプリケーションデベロッパーの合格体験記です。"
 titleWrap: wrap
