@@ -1,0 +1,11 @@
+[en]
+  title = "TechLog"
+  languageName = "English"
+  weight = 2
+  languagedir = "ltr"
+  contentdir = "content/en"
+[ja]
+  title = "TechLog"
+  languageName = "日本語"
+  weight = 1
+  contentdir = "content/ja"
