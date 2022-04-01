@@ -48,7 +48,8 @@ k8sを体系的に学べるいい機会かな、という軽い気持ちで受�
 試験改定後でもやったことは他の方とおんなじです。
 
 #### ■Udemy - Kubernetes Certified Application Developer (CKAD) with Tests -
-[Udemy: certified-kubernetes-application-developer](https://www.udemy.com/course/certified-kubernetes-application-developer/)
+
+{{< blogcard url="https://www.udemy.com/course/certified-kubernetes-application-developer/" >}}
 
 他のブログでも数多く見かけて推奨されてるやつです。
 2000円弱だったので失敗しても痛くない！と割り切り、細かいことは何も見ずに購入しました。
@@ -63,8 +64,8 @@ Udemyでカバーできてはいますが、小手先のテクニック的なも
 
 最終的には2周して全部解ける状態にしました。
 
-[https://github.com/dgkanatsios/CKAD-exercises](https://github.com/dgkanatsios/CKAD-exercises
-)
+{{< blogcard url="https://github.com/dgkanatsios/CKAD-exercises" >}}
+
 
 ちなみに、本番の試験ではこれらの演習を複数組み合わせたものが1問として出てきます。なので感触としてはもうちょいムズイのが出てきます。
 

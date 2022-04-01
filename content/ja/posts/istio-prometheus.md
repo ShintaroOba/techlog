@@ -14,7 +14,9 @@ image: images/summary/istio.png
 
 # 本記事でやること
 GKEクラスターにPromehteusをデプロイし、アプリのPodを監視する基盤を構築する。
-今回は公開されているhelm chart ([prometheus-community/kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack))を利用してPrometheus OperatorやAlertMangager等の周辺ツールの導入を行う。
+今回は公開されているhelm chart ``kube-prometheus-stack``を利用してPrometheus OperatorやAlertMangager等の周辺ツールの導入を行う。
+
+{{< blogcard url="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack" >}}
 
 # Prometheusとは
 監視用のソフトウェアとして開発された。Pull型の時系列データベースで、Prometheus内部のServiceDiscovery機能を使い、監視対象のターゲットを自動で判別することができる。
@@ -29,7 +31,8 @@ DBなどの標準的なな外部サービスは公式でExporterが提供され�
 
 
 ## Prometheus Operatorとは
-[https://github.com/prometheus-operator/prometheus-operator](https://github.com/prometheus-operator/prometheus-operator)
+{{< blogcard url="https://github.com/prometheus-operator/prometheus-operator" >}}
+
 
 Prometheus OperaotrはPrometheusの監視対象との接続や設定の管理を行う。
 k8sを触っているとOperatorという言葉に慣れて容易に理解ができるが、そうでないと感覚的に理解するのが難しい。(慣れる)
@@ -58,10 +61,7 @@ https://www.scsk.jp/sp/sysdig/blog/prometheus/prometheuskubernetes-_prometheus_o
 ServiceMonitorを使えばServiceにぶら下がったPod群すべてを監視対象のターゲットにすることができる。PodMonitorを使う場合というのは、異なるサービス間で特定のラベルがついたPodを監視したい(またはServiceを持たないPod)という場合。
 そしてPodMonitorを使いたいモチベーションが特別ないならServiceMonitorを使っておけ。とのこと。
 
-
-[https://github.com/prometheus-operator/prometheus-operator/issues/3119](https://github.com/prometheus-operator/prometheus-operator/issues/3119)
-
-
+{{< blogcard url="https://github.com/prometheus-operator/prometheus-operator/issues/3119" >}}
 
 
 ## 導入手順

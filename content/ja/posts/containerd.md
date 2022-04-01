@@ -24,8 +24,11 @@ Kubernetesはコンテナオーケストレーションのプラットフォー�
 Kubernetesのノード内でPodを操作する際にはkubeletと呼ばれるエージェントを使ってコンテナと通信を行います。ここではCRI(Container Runtime Interface)と呼ばれる規定に則ってコンテナとの通信が行われます。
 
 ![](https://f.v1.n0.cdn.getcloudapp.com/items/0I3X2U0S0W3r1D1z2O0Q/Image%202016-12-19%20at%2017.13.16.png)
+  
 
-[Introducing Container Runtime Interface (CRI) in Kubernetes](https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes/)
+Introducing Container Runtime Interface (CRI) in Kubernetes  
+{{< blogcard url="https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes/" >}}
+
 
 実はDockerはこのCRIに則っておらずKubernetesの開発者がdockershimというブリッジを用意し、このdockershimによってkubeletとコンテナの通信を可能にしていました。
 
@@ -50,7 +53,7 @@ DockerやKubernetesからの命令を受けて、低レベルコンテナラン�
 
 元々はDocker社が開発していましたが、2017年にCloud Native Foundation(CNCF)に寄贈され、その後2019年2月末にCNCFを卒業しています。  
 
-[(cncf-announces-containerd-graduation/)](https://www.cncf.io/announcements/2019/02/28/cncf-announces-containerd-graduation/)
+{{< blogcard url="https://www.cncf.io/announcements/2019/02/28/cncf-announces-containerd-graduation/" >}}
 
 実は、containerdはずっと前からDocker内部で使われていました。
 「containerd v1.0」ではCRIに対応ができておらず、Docker内部に隠れたままでしたが、「containerd v1.1」ではついにCRIに対応され、晴れてKubernetesから直接containerdを操作できるようになりました。
