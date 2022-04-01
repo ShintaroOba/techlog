@@ -8,7 +8,7 @@ tags:
 - 本
 - 監視
 
-image: images/summary/kanshi.png
+image: images/summary/kanshi.jpg
 ---
 
 
