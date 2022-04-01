@@ -15,8 +15,9 @@ image: images/summary/ckad.png
 CKAD: Certified Kubernetes Application Developerで、CNCF公認の資格です。試験は120分で20問弱。実技試験で各自ターミナルが与えらえれるので、ターミナルを使ってKubenetesリソースを作ったり動かないPodを修正する、というのが試験の内容です。
 試験中は公式ドキュメントのみ参照することができるので、kubectlコマンドで作成できないリソースは公式Docからコピペして持ってくるというのがこの試験での通例みたいです。
 
-そして、この試験ですが2021年9月に試験範囲が大幅に改定されました。
-[公式の改定内容](https://training.linuxfoundation.org/ja/ckad-program-change-2021/)
+そして、この試験ですが2021年9月に試験範囲が大幅に改定されました。  
+
+{{< blogcard url="https://training.linuxfoundation.org/ja/ckad-program-change-2021/" >}}
 
 
 * アプリケーションの設計と構築–20%
