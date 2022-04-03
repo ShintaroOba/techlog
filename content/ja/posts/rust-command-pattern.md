@@ -1,6 +1,6 @@
 ---
 type: Archive
-title: 「Rust Design Pattern」を翻訳してみた #1（Commandパターン）
+title: 「Rust Design Pattern」を翻訳してみた(1) ～Commandパターン編～
 date: 2022-04-01
 description: Commandパターン
 titleWrap: wrap
