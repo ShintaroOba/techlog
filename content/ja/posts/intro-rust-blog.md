@@ -27,7 +27,7 @@ Rustのコアな部分を対象とした記事から、かなり初心者向け�
 
 # Baby steps
 著者がRustの開発チームに所属しているだけあって、Rustブログの中ではかなりの古参。2011年ごろからブログを掲載している。1記事当たりの文章量はfasterthanli.meに比べるとかなりコンパクトで、「非同期処理例外ではPanicにすべき?非同期キャンセル(async cancellation)すべき?」などのように実践的な内容を取り扱うことが多い。基礎を抑えたうえで、Rustをもっと深く知りたい！ベストプラクティスやTipsを学びたい！という人におススメ。
-![](2022-04-10-21-58-38.png)
+![](/2022-04-10-21-58-38.png)
 
 
 {{< blogcard url="https://smallcultfollowing.com/babysteps/" >}}  
@@ -35,7 +35,7 @@ Rustのコアな部分を対象とした記事から、かなり初心者向け�
 
 # Chris Biscardi's Digital Garden
 Rust以外にもAws, js等の記事も取り扱っている。そして今回紹介するブログの中で一番UIがキレイ。記事自体もBaby stepsやfasterthanli.meに比べてとっつきやすいものが多い。「for loopとiteratorどっちがよいか？」等。英語の文章量も少ないので先述のブログで心が折れかけたときはこのブログで元気を取り戻す。
-![](2022-04-10-21-59-18.png)
+![](/2022-04-10-21-59-18.png)
 {{< blogcard url="https://www.christopherbiscardi.com/garden/" >}}  
 
 
@@ -45,7 +45,7 @@ Rust以外にもAws, js等の記事も取り扱っている。そして今回紹
 
 
 {{< blogcard url="https://podcasts.google.com/feed/aHR0cHM6Ly9ydXN0YWNlYW4tc3RhdGlvbi5vcmcvcG9kY2FzdC5yc3M/episode/cnVzdGFjZWFuLXN0YXRpb24vZXBpc29kZS8wMzYtbHVjYS1wYWxtaWVyaS8" >}} 
-![](2022-04-10-21-57-28.png)
+![](/2022-04-10-21-57-28.png)
 
 {{< blogcard url="https://www.lpalmieri.com/" >}}  
 
