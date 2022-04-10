@@ -43,12 +43,14 @@ Rust以外にもAws, js等の記事も取り扱っている。そして今回紹
 
 
 # lpalmieri.com
-ルーカス・パルミエーリという界隈では結構有名な人らしく、RustのPodcastといえば！の「Rustacean Studio」や「Building with Rust」にもゲスト出演をしていた。(家事をしながら聞いていた時に偶然発見した)
-それ故、実力者であるからかブログはかなり濃ゆい。かなり厳密に書いてあるので、日々の情報収集として読むにはハードルが高いが[How To Write A REST Client In Rust](https://www.lpalmieri.com/posts/how-to-write-a-rest-client-in-rust-with-reqwest-and-wiremock/)のような自分が実際に経験したことのある内容や、苦労した領域に関する部分については一読すべし！
-
+ルーカス・パルミエーリという界隈では結構有名な人らしく、RustのPodcastといえば！の「Rustacean Studio」や「Building with Rust」にもゲスト出演をしていた。(家事をしながら聞いていた時に偶然発見)
 
 {{< blogcard url="https://podcasts.google.com/feed/aHR0cHM6Ly9ydXN0YWNlYW4tc3RhdGlvbi5vcmcvcG9kY2FzdC5yc3M/episode/cnVzdGFjZWFuLXN0YXRpb24vZXBpc29kZS8wMzYtbHVjYS1wYWxtaWVyaS8" >}} 
 ![](/2022-04-10-21-57-28.png)
+
+それ故、実力者であるからかブログはかなり濃ゆい。かなり厳密に書いてあるので、日々の情報収集として読むにはハードルが高いが[How To Write A REST Client In Rust](https://www.lpalmieri.com/posts/how-to-write-a-rest-client-in-rust-with-reqwest-and-wiremock/)のような自分が実際に経験したことのある内容や、苦労した領域に関する部分については一読すべし！
+
+
 
 {{< blogcard url="https://www.lpalmieri.com/" >}}  
 
