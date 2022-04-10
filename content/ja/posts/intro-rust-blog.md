@@ -34,7 +34,10 @@ Rustのコアな部分を対象とした記事から、かなり初心者向け�
 
 
 # Chris Biscardi's Digital Garden
-Rust以外にもAws, js等の記事も取り扱っている。そして今回紹介するブログの中で一番UIがキレイ。記事自体もBaby stepsやfasterthanli.meに比べてとっつきやすいものが多い。「for loopとiteratorどっちがよいか？」等。英語の文章量も少ないので先述のブログで心が折れかけたときはこのブログで元気を取り戻す。
+Rust以外にもAws, js等の記事も取り扱っている。そして今回紹介するブログの中で一番UIがキレイ。記事自体もBaby stepsやfasterthanli.meに比べてとっつきやすいものが多い。「for loopとiteratorどっちがよいか？」等。英語の文章量も少ないので先述のブログで心が折れかけたときはこのブログで元気を取り戻しています。
+  
+トイレにでも入った10分足らずの間に読める記事もあるので、英語に抵抗ある人もまずはここから初めて見るといいかもしれません。
+
 ![](/2022-04-10-21-59-18.png)
 {{< blogcard url="https://www.christopherbiscardi.com/garden/" >}}  
 
