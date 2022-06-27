@@ -56,7 +56,8 @@ pub struct Bar(i32);
 上記のDeriveはプレリュードで提供されるようなよく使われるトレイトを宣言的に継承させ、derive()内に記載したトレイトの振る舞意を簡単に持たせることができる。
 
 # Yewでのアトリビュート
-Yewでは#[function_component()]を使ってコンポーネントの定義を行う。
+Yewでは#[function_component]を使ってコンポーネントの定義を行う。
+ここでは、Home画面を構成するHomeコンポーネントを定義。``html!``マクロでは、インナーブロックで与えられたHTMLタグを処理し、HTMLとして返却する。
 
 ````rs
 use yew::prelude::*;
@@ -71,4 +72,20 @@ pub fn home() -> Html {
 }
 ````
 
+#[function_component]アトリビュートの中身はこれ。
+````rs
+#[proc_macro_attribute]
+pub fn function_component(
+    attr: proc_macro::TokenStream,
+    item: proc_macro::TokenStream,
+) -> proc_macro::TokenStream {
+    let item = parse_macro_input!(item as FunctionComponent);
+    let attr = parse_macro_input!(attr as FunctionComponentName);
+
+    function_component_impl(attr, item)
+        .unwrap_or_else(|err| err.to_compile_error())
+        .into()
+}
+````
+- ``proc_macro_attribute``がfunction_component()メソッドがCustom Attributeであることを示している。
 #
