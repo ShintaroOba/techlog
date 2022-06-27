@@ -15,7 +15,9 @@ Rustを業務の傍らでやんわりと勉強している中で、[Yew](https:/
 
 これを機にRustのアトリビュートを中心にYewが内部でどのように動作しているのかを見ていく。
 
-当記事で出てくるソースコードはこちらから。https://github.com/ShintaroOba/wasm-md-editor
+当記事で出てくるソースコードはこちらから。
+[https://github.com/ShintaroOba/wasm-md-editor](https://github.com/ShintaroOba/wasm-md-editor
+)
 
 
 # Rustのアトリビュートとは
