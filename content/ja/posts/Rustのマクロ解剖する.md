@@ -91,5 +91,7 @@ pub fn function_component(
         .into()
 }
 ````
-- ``proc_macro_attribute``がfunction_component()メソッドがCustom Attributeであることを示している。
+``proc_macro_attribute``がfunction_component()メソッドがCustom Attributeであることを示しているため、利用側で#[function_component]とアトリビュートを付与した際にこのメソッドがリンクされる。
+
+
 #
