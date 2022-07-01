@@ -10,8 +10,8 @@ image: images/summary/rust.png
 ---
 
 Rustを業務の傍らでやんわりと勉強している中で、[Yew](https://github.com/yewstack/yew)を触る機会があった。
-これはRustでReactライクなフロントエンドの実装ができるOSSなのだが非常によくできていて、ReactでいうFunctional Componentを定義するには#[functional_component]というアトリビュートを任意のメソッドに対して宣言することで、宣言されたメソッドはFunctional Componentであるとみなされる。という作りになっていた。  
-一利用者として、Reactライクな作りをRustの機構で再現していること、またReactに負けず劣らずの表現が可能なことに感動した私は、どうしてもYewの中身を知ってみたくなった。  
+これはRustでReactライクなフロントエンドの実装ができるOSSなのだが、非常によくできていて、簡単に言うとReactのような実装をRustで記述できるというもの。  
+興味本位で軽く触ってみたが、Reactに負けず劣らずの表現がYewで可能なことに感動し、どうしてもYewの中身を知ってみたくなった。  
 
 これを機にRustのアトリビュートを中心にYewが内部でどのように動作しているのかを見ていく。
 
@@ -73,6 +73,8 @@ pub fn home() -> Html {
     }
 }
 ````
+
+
 
 #[function_component]アトリビュートの中身はこれ。
 ````rs
