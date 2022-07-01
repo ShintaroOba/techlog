@@ -21,6 +21,7 @@ Rustを業務の傍らでやんわりと勉強している中で、[Yew](https:/
 
 
 # Rustのアトリビュートとは
+``macro_rules!``で記載されるマクロが宣言的マクロ、``#[some_attribute]``で記載されるものは手続き的マクロと呼ばれているが、アトリビュートというのはこの手続き的マクロに該当する。
 [Rust-by-example](https://doc.rust-jp.rs/rust-by-example-ja/attribute.html)にはこう書かれている。
 > アトリビュートはモジュール、クレート、要素に対するメタデータです。以下がその使用目的です。
 > - コンパイル時の条件分岐
@@ -92,6 +93,8 @@ pub fn function_component(
 }
 ````
 ``proc_macro_attribute``がfunction_component()メソッドがCustom Attributeであることを示しているため、利用側で#[function_component]とアトリビュートを付与した際にこのメソッドがリンクされる。
+上記のような手続き的マクロを定義するメソッドには、``TokenStream``を入力として受け取り``TokenStream``を出力として返す。
+マクロを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
 
 
 #
