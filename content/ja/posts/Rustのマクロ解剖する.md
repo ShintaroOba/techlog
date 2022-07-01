@@ -96,5 +96,5 @@ pub fn function_component(
 上記のような手続き的マクロを定義するメソッドには、``TokenStream``を入力として受け取り``TokenStream``を出力として返す。
 マクロを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
 
-
+https://doc.rust-jp.rs/book-ja/ch19-06-macros.html
 #
