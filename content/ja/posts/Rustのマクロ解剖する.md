@@ -21,7 +21,7 @@ Rustを業務の傍らでやんわりと勉強している中で、[Yew](https:/
 
 
 # Rustにおけるマクロとは
-メタプログラミングと呼ばれており、コードをコードによって生成するための機能。
+メタプログラミングと呼ばれており、コードをコードによって生成するための機能。Rustではこれがコンパイル時に行われる。
 マクロは宣言的マクロ、手続き型マクロの2種類に分類することができ、
 ``macro_rules!``で記載されるマクロが宣言的マクロ、``#[some_attribute]``で記載されるものは手続き的マクロと呼ばれているが、今回メインで紹介したいYewで利用されるアトリビュートというのはこの手続き的マクロに該当する。
 手続き型マクロの中には、``#[proc_macro]``、``#[proc_macro_attribute]``等があり、部分的にlintを無効化したり(例えばDeadCodeを許容する)、環境に応じたコンパイル自の挙動制御(下記参照)など。
@@ -107,9 +107,69 @@ pub fn function_component(
 - マクロを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
 - 引数の１つ目である``attr: proc_macro::TokenStream``は呼び出し側(``#[function_component(Home)]``)の``Home``を指しているのに対し、2つ目の``item: proc_macro::TokenStream``は``#[function_component(Home)]``を付与した関数の中身に対応している。(function_componentの例ではitemはFunctionComponent、attrはFunctionComponentNameに対応)
 - ``parse_macro_input!``はTokenStreamのトークン列を構文木にパース。
-  - 一般的にマクロを定義するlib.rsにはアトリビュートに関する詳細な実装を書かないため、別のクレートの関数を呼び出すことがほとんど。
-- ``function_componnet_impl``関数
 
+一般的に、parse_macro_input!によって構文木にパースされたTokenStreamは、このあと``quote``マクロによって再度TokenStreamに変換され、マクロ呼び出し元の結果として返却される。
+マクロを定義するlib.rsにはアトリビュートに関する詳細な実装を書けないため、アトリビュート本体の実装は別のクレートの関数を呼び出す形式をとることが多い。
+Yewの#[functionComponent]においてもその流れは変わらず、上述の流れでパースされた構文木は``function_componnet_impl``関数内でquote!マクロが呼ばれてトークン列に変換されている。
 
-//TODO: quoteマクロについて記載
+````rs
+pub fn function_component_impl(
+    name: FunctionComponentName,
+    component: FunctionComponent,
+) -> syn::Result<TokenStream> {
+    let FunctionComponentName { component_name } = name;
+
+    let FunctionComponent {
+        block,
+        props_type,
+        arg,
+        generics,
+        vis,
+        attrs,
+        name: function_name,
+        return_type,
+    } = component;
+
+    let (impl_generics, ty_generics, where_clause) = generics.split_for_impl();
+
+    if function_name == component_name {
+        return Err(syn::Error::new_spanned(
+            component_name,
+            "the component must not have the same name as the function",
+        ));
+    }
+
+    let ret_type = quote_spanned!(return_type.span()=> ::yew::html::Html);
+
+    let phantom_generics = generics
+        .type_params()
+        .map(|ty_param| ty_param.ident.clone()) // create a new Punctuated sequence without any type bounds
+        .collect::<Punctuated<_, Comma>>();
+
+    let quoted = quote! {
+        #[doc(hidden)]
+        #[allow(non_camel_case_types)]
+        #[allow(unused_parens)]
+        #vis struct #function_name #impl_generics {
+            _marker: ::std::marker::PhantomData<(#phantom_generics)>,
+        }
+
+        impl #impl_generics ::yew::functional::FunctionProvider for #function_name #ty_generics #where_clause {
+            type TProps = #props_type;
+
+            fn run(#arg) -> #ret_type {
+                #block
+            }
+        }
+
+        #(#attrs)*
+        #[allow(type_alias_bounds)]
+        #vis type #component_name #impl_generics = ::yew::functional::FunctionComponent<#function_name #ty_generics>;
+    };
+
+    Ok(quoted)
+}
+
+````
+
 #
