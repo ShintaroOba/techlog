@@ -37,7 +37,7 @@ fn are_you_on_linux(){
 
 
 ## つまるところ何がうれしいのか
-複雑な内部動作を隠蔽し、開発者にとって可読性の高い状態で構造体やメソッドに付加情報を与えることができる。また、構造体やメソッドの単位での付加情報の一覧性にも優れる。
+複雑な内部動作を隠蔽し、開発者にとって可読性の高い状態で構造体や関数に付加情報を与えることができる。また、構造体や関数の単位での付加情報の一覧性にも優れる。
 
 ````rs
 #[derive(Debug, Eq, PartialEq)]
@@ -53,7 +53,7 @@ pub struct Bar(i32);
 # Yewでのアトリビュート
 先ほど説明したマクロの中でも、foo!や#[derive(Foo)]などとは異なる、関数や構造体に対して付与するマクロのことをアトリビュートと呼ぶ。
 
-[Rust-by-example](https://doc.rust-jp.rs/rust-by-example-ja/attribute.html)には以下のように書かれていて、定義したメソッドや構造体を拡張するために使われる。
+[Rust-by-example](https://doc.rust-jp.rs/rust-by-example-ja/attribute.html)には以下のように書かれていて、定義した関数や構造体を拡張するために使われる。
 > アトリビュートはモジュール、クレート、要素に対するメタデータです。以下がその使用目的です。
 > - コンパイル時の条件分岐
 > - クレート名、バージョン、種類（バイナリか、ライブラリか）の設定
@@ -102,12 +102,13 @@ pub fn function_component(
         .into()
 }
 ````
-``proc_macro_attribute``がfunction_component()メソッドがCustom Attributeであることを示しているため、利用側で#[function_component]とアトリビュートを付与した際にこのメソッドがリンクされる。
-手続き的マクロを定義するメソッドには、``TokenStream``を入力として受け取り``TokenStream``を出力として返す。
-マクロを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
-引数の１つ目である``attr: proc_macro::TokenStream``は呼び出し側(``#[function_component(Home)]``)の``Home``を指しているのに対し、2つ目の``item: proc_macro::TokenStream``は``#[function_component(Home)]``を付与した関数の中身に対応している。(function_componentの例ではitemはFunctionComponent、attrはFunctionComponentNameに対応)
-
-``parse_macro_input!``はTokenStreamのトークン列を構文木にパースしている。
+- ``proc_macro_attribute``がfunction_component()関数がCustom Attributeであることを示しているため、利用側で#[function_component]とアトリビュートを付与した際にこの関数がリンクされる。
+- 手続き的マクロを定義する関数には、``TokenStream``を入力として受け取り``TokenStream``を出力として返す。
+- マクロを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
+- 引数の１つ目である``attr: proc_macro::TokenStream``は呼び出し側(``#[function_component(Home)]``)の``Home``を指しているのに対し、2つ目の``item: proc_macro::TokenStream``は``#[function_component(Home)]``を付与した関数の中身に対応している。(function_componentの例ではitemはFunctionComponent、attrはFunctionComponentNameに対応)
+- ``parse_macro_input!``はTokenStreamのトークン列を構文木にパース。
+  - 一般的にマクロを定義するlib.rsにはアトリビュートに関する詳細な実装を書かないため、別のクレートの関数を呼び出すことがほとんど。
+- ``function_componnet_impl``関数
 
 
 //TODO: quoteマクロについて記載
