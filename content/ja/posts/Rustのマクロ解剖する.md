@@ -100,4 +100,8 @@ pub fn function_component(
 マクロを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
 引数の１つ目である``attr: proc_macro::TokenStream``は呼び出し側(``#[function_component(Home)]``)の``Home``を指しているのに対し、2つ目の``item: proc_macro::TokenStream``は``#[function_component(Home)]``を付与した関数の中身に対応している。
 
+``parse_macro_input!``は引数に渡した値をasの後に書いた型にParseするための手続き型マクロ。
+function_componentの例ではitemをFunctionComponent、attrをFunctionComponentNameの型にParseしている。
+
+//TODO: quoteマクロについて記載
 #
