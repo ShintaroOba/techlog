@@ -75,6 +75,9 @@ pub fn home() -> Html {
 }
 ````
 
+画面ではこう表示される。(ボタンは別で配置している)
+
+![welcome](/welcome-my-editor.png)
 
 
 #[function_component]アトリビュートの中身はこれ。
@@ -93,8 +96,8 @@ pub fn function_component(
 }
 ````
 ``proc_macro_attribute``がfunction_component()メソッドがCustom Attributeであることを示しているため、利用側で#[function_component]とアトリビュートを付与した際にこのメソッドがリンクされる。
-上記のような手続き的マクロを定義するメソッドには、``TokenStream``を入力として受け取り``TokenStream``を出力として返す。
+手続き的マクロを定義するメソッドには、``TokenStream``を入力として受け取り``TokenStream``を出力として返す。
 マクロを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
+引数の１つ目である``attr: proc_macro::TokenStream``は呼び出し側(``#[function_component(Home)]``)の``Home``を指しているのに対し、2つ目の``item: proc_macro::TokenStream``は``#[function_component(Home)]``を付与した関数の中身に対応している。
 
-https://doc.rust-jp.rs/book-ja/ch19-06-macros.html
 #
