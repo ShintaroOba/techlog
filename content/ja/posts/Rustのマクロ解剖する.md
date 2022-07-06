@@ -22,20 +22,9 @@ Rustを業務の傍らでやんわりと勉強している中で、[Yew](https:/
 
 # Rustにおけるマクロとは
 メタプログラミングと呼ばれており、コードをコードによって生成するための機能。
-[Rust-by-example](https://doc.rust-jp.rs/rust-by-example-ja/attribute.html)にはこう書かれていて、定義したメソッドや構造体を拡張するために使われる。
-> アトリビュートはモジュール、クレート、要素に対するメタデータです。以下がその使用目的です。
-> - コンパイル時の条件分岐
-> - クレート名、バージョン、種類（バイナリか、ライブラリか）の設定
-> - リントの無効化
-> - コンパイラ付属の機能（マクロ、グロブ、インポートなど）の使用
-> - 外部ライブラリへのリンク
-> - ユニットテスト用の関数を明示
-> - ベンチマーク用の関数を明示
-
-``macro_rules!``で記載されるマクロが宣言的マクロ、``#[some_attribute]``で記載されるものは手続き的マクロと呼ばれているが、アトリビュートというのはこの手続き的マクロに該当する。
-手続き型マクロの中には、``#[proc_macro]``、``#[proc_macro_attribute]``等があり、
-
-部分的にlintを無効化したり(例えばDeadCodeを許容する)、環境に応じたコンパイル自の挙動制御(下記参照)など。
+マクロは宣言的マクロ、手続き型マクロの2種類に分類することができ、
+``macro_rules!``で記載されるマクロが宣言的マクロ、``#[some_attribute]``で記載されるものは手続き的マクロと呼ばれているが、今回メインで紹介したいYewで利用されるアトリビュートというのはこの手続き的マクロに該当する。
+手続き型マクロの中には、``#[proc_macro]``、``#[proc_macro_attribute]``等があり、部分的にlintを無効化したり(例えばDeadCodeを許容する)、環境に応じたコンパイル自の挙動制御(下記参照)など。
 
 ````rs
 // 実行環境がLinuxの場合のみコンパイルされる
@@ -59,10 +48,21 @@ pub struct Bar(i32);
 
 ````
 
-上記のDeriveはプレリュードで提供されるようなよく使われるトレイトを宣言的に継承させ、derive()内に記載したトレイトの振る舞意を簡単に持たせることができる。
+上記のDeriveはプレリュードで提供されるようなよく使われるトレイトを宣言的に継承させ、derive()内に記載したトレイトの振るまいを持たせることができる。
 
 # Yewでのアトリビュート
-先ほど説明したマクロの中でも、foo!や#[derive(Foo)]などとは異なる、関数に対して属性として付与するマクロのことをアトリビュートと呼ぶ。
+先ほど説明したマクロの中でも、foo!や#[derive(Foo)]などとは異なる、関数や構造体に対して付与するマクロのことをアトリビュートと呼ぶ。
+
+[Rust-by-example](https://doc.rust-jp.rs/rust-by-example-ja/attribute.html)には以下のように書かれていて、定義したメソッドや構造体を拡張するために使われる。
+> アトリビュートはモジュール、クレート、要素に対するメタデータです。以下がその使用目的です。
+> - コンパイル時の条件分岐
+> - クレート名、バージョン、種類（バイナリか、ライブラリか）の設定
+> - リントの無効化
+> - コンパイラ付属の機能（マクロ、グロブ、インポートなど）の使用
+> - 外部ライブラリへのリンク
+> - ユニットテスト用の関数を明示
+> - ベンチマーク用の関数を明示
+
 Yewでは#[function_component]を使った関数の定義によってコンポーネントを構築していくが、この関数に付与するマクロがアトリビュートに当たる。
 
 ````rs
@@ -105,10 +105,10 @@ pub fn function_component(
 ``proc_macro_attribute``がfunction_component()メソッドがCustom Attributeであることを示しているため、利用側で#[function_component]とアトリビュートを付与した際にこのメソッドがリンクされる。
 手続き的マクロを定義するメソッドには、``TokenStream``を入力として受け取り``TokenStream``を出力として返す。
 マクロを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
-引数の１つ目である``attr: proc_macro::TokenStream``は呼び出し側(``#[function_component(Home)]``)の``Home``を指しているのに対し、2つ目の``item: proc_macro::TokenStream``は``#[function_component(Home)]``を付与した関数の中身に対応している。
+引数の１つ目である``attr: proc_macro::TokenStream``は呼び出し側(``#[function_component(Home)]``)の``Home``を指しているのに対し、2つ目の``item: proc_macro::TokenStream``は``#[function_component(Home)]``を付与した関数の中身に対応している。(function_componentの例ではitemはFunctionComponent、attrはFunctionComponentNameに対応)
 
-``parse_macro_input!``は引数に渡した値をasの後に書いた型にParseするための手続き型マクロ。
-function_componentの例ではitemをFunctionComponent、attrをFunctionComponentNameの型にParseしている。
+``parse_macro_input!``はTokenStreamのトークン列を構文木にパースしている。
+
 
 //TODO: quoteマクロについて記載
 #
