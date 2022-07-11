@@ -20,7 +20,7 @@ Rustを業務の傍らでやんわりと勉強している中で、[Yew](https:/
 )
 
 
-# Rustにおけるマクロとは
+## Rustにおけるマクロとは
 メタプログラミングと呼ばれており、コードをコードによって生成するための機能。Rustではこれがコンパイル時に行われる。
 マクロは宣言的マクロ、手続き型マクロの2種類に分類することができ、
 ``macro_rules!``で記載されるマクロが宣言的マクロ、``#[some_attribute]``で記載されるものは手続き的マクロと呼ばれているが、今回メインで紹介したいYewで利用されるアトリビュートというのはこの手続き的マクロに該当する。
@@ -36,7 +36,7 @@ fn are_you_on_linux(){
 ````
 
 
-## つまるところ何がうれしいのか
+### つまるところ何がうれしいのか
 複雑な内部動作を隠蔽し、開発者にとって可読性の高い状態で構造体や関数に付加情報を与えることができる。また、構造体や関数の単位での付加情報の一覧性にも優れる。
 
 ````rs
@@ -50,7 +50,7 @@ pub struct Bar(i32);
 
 上記のDeriveはプレリュードで提供されるようなよく使われるトレイトを宣言的に継承させ、derive()内に記載したトレイトの振るまいを持たせることができる。
 
-# Yewでのアトリビュート
+## Yewでのアトリビュート
 先ほど説明したマクロの中でも、foo!や#[derive(Foo)]などとは異なる、関数や構造体に対して付与するマクロのことをアトリビュートと呼ぶ。
 
 [Rust-by-example](https://doc.rust-jp.rs/rust-by-example-ja/attribute.html)には以下のように書かれていて、定義した関数や構造体を拡張するために使われる。
@@ -63,6 +63,7 @@ pub struct Bar(i32);
 > - ユニットテスト用の関数を明示
 > - ベンチマーク用の関数を明示
 
+### #[function_component]
 Yewでは#[function_component]を使った関数の定義によってコンポーネントを構築していくが、この関数に付与するマクロがアトリビュートに当たる。
 
 ````rs
@@ -119,32 +120,7 @@ pub fn function_component_impl(
 ) -> syn::Result<TokenStream> {
     let FunctionComponentName { component_name } = name;
 
-    let FunctionComponent {
-        block,
-        props_type,
-        arg,
-        generics,
-        vis,
-        attrs,
-        name: function_name,
-        return_type,
-    } = component;
-
-    let (impl_generics, ty_generics, where_clause) = generics.split_for_impl();
-
-    if function_name == component_name {
-        return Err(syn::Error::new_spanned(
-            component_name,
-            "the component must not have the same name as the function",
-        ));
-    }
-
-    let ret_type = quote_spanned!(return_type.span()=> ::yew::html::Html);
-
-    let phantom_generics = generics
-        .type_params()
-        .map(|ty_param| ty_param.ident.clone()) // create a new Punctuated sequence without any type bounds
-        .collect::<Punctuated<_, Comma>>();
+    // ・・・略
 
     let quoted = quote! {
         #[doc(hidden)]
@@ -172,4 +148,78 @@ pub fn function_component_impl(
 
 ````
 
-#
+### html!
+html!のようなマクロは手続き的マクロの一種で、関数風マクロとも呼ばれる。宣言的マクロと非常に似ているが、``macro_rules!``ではなく、``#[proc_macro]``を利用し、手続き的マクロ同様にTokenStreamを受け取って生成したTokenStreamを返す点で違いが明確にある。
+html!を使ったサンプル実装を下記に示す。
+
+````rs
+use yew::prelude::*;
+
+#[function_component(Home)]
+pub fn home() -> Html {
+    html! {
+            <h1>{"Welcome to my editor!"}</h1>
+    }
+}
+
+````
+
+````rs
+use crate::{components::home::Home, Routing};
+use stylist::style;
+use yew::prelude::*;
+use yew_router::{history::History, hooks::use_history};
+
+#[function_component(Top)]
+pub fn top() -> Html {
+    let container = style!(
+        r#"
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        "#
+    )
+    .expect("Failed to styled.");
+    let button = style!(
+        r#"
+        color: #ffffff;
+        width: 200px;
+        padding: 10px;
+        background-color: #1976d2;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+        -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+        :hover {
+            background: #115293;
+            margin-top: 3px;
+        }
+        "#
+    )
+    .expect("Failed to styled.");
+    let history = use_history().unwrap();
+    let onclick = Callback::once(move |_| history.push(Routing::Editor));
+
+    html! {
+        <>
+            <div class={container}>
+                <Home />
+                <button class={button} {onclick}>{"Start"}</ button>
+            </div>
+        </>
+    }
+
+````
+- Homeコンポーネントは「Welcome to my editor!」を返すだけのシンプルなコンポーネント。
+- Topコンポーネントは、Homeコンポーネントを呼び出しており、Startボタンを配置するTopページを表している。
+- styleは[stylist](https://github.com/futursolo/stylist-rs)を利用しており、Reactのような宣言的なスタイルの定義が可能。
+
+ここまでの説明でやっと冒頭の画像のコンポーネントの画像に戻る。
+![welcome](/welcome-my-editor.png)
+
+````rs
+#[proc_macro_error::proc_macro_error]
+#[proc_macro]
+pub fn html(input: TokenStream) -> TokenStream {
+    let root = parse_macro_input!(input as HtmlRootVNode);
+    TokenStream::from(root.into_token_stream())
+}
+````
