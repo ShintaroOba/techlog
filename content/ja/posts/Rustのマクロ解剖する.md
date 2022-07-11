@@ -2,7 +2,7 @@
 type: Archive
 title: Yewを解剖し、マクロの動作を理解する
 date: 2022-06-27
-description: マクロ
+description: マクロのソースコードを頑張って追ってみる...
 titleWrap: wrap
 tags: 
 - Rust
