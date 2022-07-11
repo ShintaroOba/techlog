@@ -104,7 +104,7 @@ pub fn function_component(
 ````
 - ``proc_macro_attribute``がfunction_component()関数がCustom Attributeであることを示しているため、利用側で#[function_component]とアトリビュートを付与した際にこの関数がリンクされる。
 - 手続き的マクロを定義する関数には、``TokenStream``を入力として受け取り``TokenStream``を出力として返す。
-- マクロを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
+- アトリビュートを付与したソースコードが入力値としてTokenStreamに変換され、それを基にマクロが生成するソースコードがTokenStreamとして返却される。
 - 引数の１つ目である``attr: proc_macro::TokenStream``は呼び出し側(``#[function_component(Home)]``)の``Home``を指しているのに対し、2つ目の``item: proc_macro::TokenStream``は``#[function_component(Home)]``を付与した関数の中身に対応している。(function_componentの例ではitemはFunctionComponent、attrはFunctionComponentNameに対応)
 - ``parse_macro_input!``はTokenStreamのトークン列を構文木にパース。
 
